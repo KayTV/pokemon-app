@@ -1,5 +1,5 @@
 body {
-    background-image: url("http://images4.fanpop.com/image/photos/18700000/Pikachu-s-emotion-pokemon-18757136-1050-809.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("http://images4.fanpop.com/image/photos/18700000/Pikachu-s-emotion-pokemon-18757136-1050-809.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -9,10 +9,57 @@ body {
 header {
   text-align: center;
   font-family: "arial";
-  text-shadow: 1px 1px grey;
+  text-shadow: 1px 1px #FCFC01;
+  color: #294CF9;
 }
 
 header img {
-  height: 50%;
-  width: 50%;
+  height: 40%;
+  width: 40%;
+}
+
+img {
+  height: 40%;
+  width: 40%;
+}
+
+.results {
+  height: 330px;
+  width: 450px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 10px;
+  margin-left: 50px;
+  text-align: center;
+  float: left;
+  padding: 5px;
+}
+
+.enemy {
+  height: 330px;
+  width: 450px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 10px;
+  margin-right: 50px;
+  text-align: center;
+  float: right;
+  padding: 5px;
+}
+
+input[type = text] {
+  border: 1px solid #999;
+  border-radius: 10px;
+  width: 400px;
+  font-size: 20px;
+  margin: 5px;
+  text-align: center;
+}
+
+button[type = submit] {
+  border: 1px solid #999;
+  border-radius: 10px;
+  width: 200px;
+  font-size: 20px;
+  color: #FCFC01;
+  background-color: #294CF9;
+  margin: 5px;
 }

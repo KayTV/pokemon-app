@@ -12,13 +12,19 @@
   <body>
     <header>
       <img src="http://vignette2.wikia.nocookie.net/scottlandminecraft/images/5/5e/US_Pokemon_Logo.png/revision/latest?cb=20111231024917">
-      <h3>Gotta Catch 'Em All!</h3>
+      <h3>Choose Your Pokemon!</h3>
     </header>
-    <center><section>
-      <input type="text" id='title' placeholder="Search"><br>
-      <button id='call' type="submit">Search</button><br>
-      <div id='results'></div>
-    </section></center>
+    <section>
+      <center><input type="text" id='title' placeholder="Enter In Pokedex Number"><br>
+      <button id='call' type="submit">Search</button><br></center>
+      <div class='results'>
+        <div id='results'>
+        </div>
+      </div>
+      <div class='enemy'>
+        <div id='enemy'></div>
+      </div>
+    </section>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="./main.js"></script>
