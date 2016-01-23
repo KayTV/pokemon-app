@@ -11,3 +11,8 @@ header {
   font-family: "arial";
   text-shadow: 1px 1px grey;
 }
+
+header img {
+  height: 50%;
+  width: 50%;
+}
