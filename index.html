@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link type="text/css" rel="stylesheet" href="main.css"/>
   <meta charset="UTF-8">
-  <!-- <link rel='shortcut icon' href='pictures/film-reel.jpg' type='image/x-icon'/ > -->
+  <link rel='shortcut icon' href='http://megaicons.net/static/img/icons_sizes/40/110/128/pokemon-icon.png' type='image/x-icon'/ >
   <title>Pokemon App</title>
 </head>
   <body>
@@ -15,13 +15,18 @@
       <h3>Choose Your Pokemon!</h3>
     </header>
     <section>
-      <center><input type="text" id='title' placeholder="Enter In Pokedex Number"><br>
-      <button id='call' type="submit">Search</button><br></center>
+      <center>
+        <input type="text" id='title' placeholder="Enter In Pokedex Number"><br>
+        <button id='call' type="submit">Search</button>
+        <button type="submit">Battle!!</button><br>
+      </center>
       <div class='results'>
+        <h3>Player:</h3>
         <div id='results'>
         </div>
       </div>
       <div class='enemy'>
+        <h3>Opponent:</h3>
         <div id='enemy'></div>
       </div>
     </section>

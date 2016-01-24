@@ -18,10 +18,10 @@ function userPokemon(pokemon) {
     }).done(function(response2) {
       console.log(response2)
     $("#results").html('  ');
-      $("#results").append("<h2>"+response.name+"</h2>");
-      $("#results").append("<h4> Pokedex Number: "+response.pkdx_id+"</h4>")
+      $("#results").append("<h3>"+response.name+"</h3>");
+      $("#results").append("<p> Pokedex Number: "+response.pkdx_id+"</p>")
       //loop
-      $("#results").append("<h3 id=\"types\">Type: </h3>");
+      $("#results").append("<p id=\"types\">Type: </p>");
       response.types.forEach(function(val, index, array) {
         if(index !== array.length-1){
           $("#types").append(val.name+", ");
@@ -49,10 +49,10 @@ function enemyPokemon() {
     }).done(function(response2) {
       console.log(response2)
     $("#enemy").html('  ');
-      $("#enemy").append("<h2>"+response.name+"</h2>");
-      $("#enemy").append("<h4> Pokedex Number: "+response.pkdx_id+"</h4>")
+      $("#enemy").append("<h3>"+response.name+"</h3>");
+      $("#enemy").append("<p> Pokedex Number: "+response.pkdx_id+"</p>")
       //loop
-      $("#enemy").append("<h3 id=\"enemyTypes\">Type: </h3>");
+      $("#enemy").append("<p id=\"enemyTypes\">Type: </p>");
       response.types.forEach(function(val, index, array) {
         if(index !== array.length-1){
           $("#enemyTypes").append(val.name+", ");
