@@ -35,10 +35,32 @@
     <!-- <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="resultsModal">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Pokemon Battle!</h4>
+          </div>
           ...
         </div>
       </div>
     </div> -->
+
+<div class="modal fade bs-example-modal-sm" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Pokemon Battle!!!</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Run Away!</button>
+        <button type="button" class="btn btn-primary">Keep Battling!!</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

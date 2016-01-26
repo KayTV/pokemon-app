@@ -65,3 +65,9 @@ button[type = submit] {
   background-color: #294CF9;
   margin: 5px;
 }
+
+.modal-content {
+  text-align: center;
+  padding: 5px;
+  font-size: 20px;
+}
