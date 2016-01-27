@@ -71,3 +71,14 @@ button[type = submit] {
   padding: 5px;
   font-size: 20px;
 }
+
+.modal-footer img {
+  height: 7%;
+  width: 7%;
+  float: left;
+}
+
+.modal-footer p {
+  float: left;
+  font-size: 15px;
+}

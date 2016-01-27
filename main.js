@@ -10,7 +10,13 @@ $(document).ready( function() {
   });
 
   $("#battle").on("click", function(){
+    $('#hits').html('');
     console.log('Battle!!!');
+    battle2();
+  });
+
+  $("#keepBattling").on("click", function(){
+    $("#hits").append("<img src=http://www.clipartbest.com/cliparts/bTy/E66/bTyE66gbc.png>");
     battle2();
   });
 
@@ -137,7 +143,6 @@ function battle2 () {
       $modal.modal('show');
   } else if (enemy.hp <= 0) {
       $(".modal-body").html("<p>Your opponent's Pokemon fainted! Battle Won!!!</p>");
-      //image
       $(".modal-body").append("<img src=https://themoonmedia.files.wordpress.com/2014/09/1916921-ash_ketchum_friend_pikachu_kanto_johto.png>")
       $modal.modal('show');
   }
