@@ -11,6 +11,7 @@ $(document).ready( function() {
 
   $("#battle").on("click", function(){
     $('#hits').html('');
+    $("#fade").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
     console.log('Battle!!!');
     battle2();
   });
@@ -121,6 +122,7 @@ function battle2 () {
   } else if (player.defense < enemy.attack) {
     player.hp -= 20;
   }
+
   $(".modal-body").html("<p>Your opponent's pokemon has " +enemy.hp+ " hit points left, while you have "
     +player.hp+ " hit points left. Keep Battling??</p>");
   $(".modal-body").append('<img src=http://www.toonbarn.com/wordpress/wp-content/uploads/2011/07/Pokemon-Black-White-Battling-for-the-Love-of-Bug-Types.jpg>');
