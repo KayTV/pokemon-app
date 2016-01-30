@@ -12,7 +12,6 @@ $(document).ready( function() {
   $("#battle").on("click", function(){
     $('#hits').html('');
     $("#fade").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-    console.log('Battle!!!');
     battle2();
   });
 
@@ -83,52 +82,50 @@ $(document).ready( function() {
     });
   }
 
-//   function battle () {
-//     console.log(player);
-//     console.log(enemy);
-//     while (true) {
-//       if (player.attack > enemy.defense) {
-//         enemy.hp -= 20;
-//         // player.hp -= 10;
-//       } else if (player.defense < enemy.attack) {
-//         player.hp -= 20;
-//         // enemy.hp -= 10;
-//       } else if (player.attack === enemy.defense || player.defense === enemy.attack) {
-//           player.hp -= 20;
-//           enemy.hp -= 20;
-//           prompt("Your pokemon are evenly matched!");
-//       }
-//       if (player.hp <=0 && enemy.hp <= 0) {
-//         prompt("Pokemon are equally matched, both fainted.");
-//         break;
-//       }
-//       else if (player.hp <= 0 ) {
-//         prompt("Your Pokemon Fainted! Battle Lost");
-//         break;
-//       }
-//       else if (enemy.hp <= 0) {
-//         prompt("Your opponent's Pokemon fainted! Battle Won!!!");
-//         break;
-//       }
-//       prompt("Your opponent's pokemon has " +enemy.hp+ " hit points left, while you have "
-//         +player.hp+ " hit points left.");
-//     }
-//   }
-// });
-
 function battle2 () {
-  if (player.attack > enemy.defense) {
+  if (player.attack >= enemy.defense) {
     enemy.hp -= 20;
-  } else if (player.defense < enemy.attack) {
+    player.hp -= 10;
+    $(".modal-body").html('<img src=assets/Battle.jpg>');
+    $(".modal-body").append("<p>Critical Hit! Your opponent has " +enemy.hp+ " HP left. Opponent attacked, You have "
+      +player.hp+ " HP left. Keep Battling??</p>");
+    $(".modal-body").append('<img src=assets/bottom.jpg>');
+      $modal = $('#resultsModal');
+      console.log($modal);
+      $modal.modal('show');
+  } else if (player.defense <= enemy.attack) {
     player.hp -= 20;
+    enemy.hp -= 10;
+    $(".modal-body").html('<img src=assets/Battle.jpg>');
+    $(".modal-body").append("<p>Opponent's pokemon is strong! You have " +player.hp+ " HP left. Your pokemon attacks. Opponent has "
+      +enemy.hp+ " HP left. Keep Battling??</p>");
+    $(".modal-body").append('<img src=assets/bottom.jpg>');
+      $modal = $('#resultsModal');
+      console.log($modal);
+      $modal.modal('show');
+  } else {
+      if (player.attack > enemy.attack) {
+        enemy.hp -= 10;
+        player.hp -= 5;
+        $(".modal-body").html('<img src=assets/Battle.jpg>');
+        $(".modal-body").append("<p>Pokemon are closely matched! Your opponent has " +enemy.hp+ " HP left. Opponent attacked, You have "
+          +player.hp+ " HP left. Keep Battling??</p>");
+        $(".modal-body").append('<img src=assets/bottom.jpg>');
+          $modal = $('#resultsModal');
+          console.log($modal);
+          $modal.modal('show');
+      } else if (player.attack < enemy.attack) {
+        player.hp -= 10;
+        enemy.hp -= 5;
+        $(".modal-body").html('<img src=assets/Battle.jpg>');
+        $(".modal-body").append("<p>Pokemon are closely matched! Your opponent has " +enemy.hp+ " HP left. Opponent attacked, You have "
+          +player.hp+ " HP left. Keep Battling??</p>");
+        $(".modal-body").append('<img src=assets/bottom.jpg>');
+          $modal = $('#resultsModal');
+          console.log($modal);
+          $modal.modal('show');
+      }
   }
-
-  $(".modal-body").html("<p>Your opponent's pokemon has " +enemy.hp+ " hit points left, while you have "
-    +player.hp+ " hit points left. Keep Battling??</p>");
-  $(".modal-body").append('<img src=http://www.toonbarn.com/wordpress/wp-content/uploads/2011/07/Pokemon-Black-White-Battling-for-the-Love-of-Bug-Types.jpg>');
-    $modal = $('#resultsModal');
-    console.log($modal);
-    $modal.modal('show');
   if (player.attack === enemy.defense || player.defense === enemy.attack) {
       player.hp -= 20;
       enemy.hp -= 20;
@@ -140,12 +137,14 @@ function battle2 () {
       $(".modal-body").append("<img src=http://2.bp.blogspot.com/-oMKi1odYqAA/TtnLMZTLq5I/AAAAAAAABM0/S3ppJU_zijQ/s1600/vlcsnap-1473307.png>")
       $modal.modal('show');
   } else if (player.hp <= 0 ) {
-      $(".modal-body").html("<p>Your Pokemon Fainted! Battle Lost</p>");
-      $(".modal-body").append("<img src=http://media.animevice.com/uploads/0/3695/287706-319.jpg>")
+      $(".modal-body").html("<img src=assets/opponent_win.jpg>")
+      $(".modal-body").append("<p>Your Pokemon Fainted! Battle Lost</p>");
+      $(".modal-body").append('<img src=assets/bottom.jpg>');
       $modal.modal('show');
   } else if (enemy.hp <= 0) {
-      $(".modal-body").html("<p>Your opponent's Pokemon fainted! Battle Won!!!</p>");
-      $(".modal-body").append("<img src=https://themoonmedia.files.wordpress.com/2014/09/1916921-ash_ketchum_friend_pikachu_kanto_johto.png>")
+      $(".modal-body").html("<img src=assets/player_win.jpg>")
+      $(".modal-body").append("<p>Your opponent's Pokemon fainted! Battle Won!!!</p>");
+      $(".modal-body").append('<img src=assets/bottom.jpg>');
       $modal.modal('show');
   }
 };
