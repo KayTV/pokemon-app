@@ -12,7 +12,15 @@ $(document).ready( function() {
   $("#battle").on("click", function(){
     $('#hits').html('');
     $("#fade").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-    battle2();
+    $("#keepBattling").hide();
+    $("#battleModal").show();
+    battle();
+  });
+
+  $("#battleModal").on("click", function(){
+    $("#keepBattling").show();
+    $("#battleModal").hide();
+    battleResponse();
   });
 
   $("#keepBattling").on("click", function(){
@@ -82,6 +90,22 @@ $(document).ready( function() {
     });
   }
 
+  function battle () {
+    $(".modal-body").html('<img src=assets/red_vs_blue.jpg>');
+    $(".modal-body").append("<p>Opponent wants to battle!!</p>");
+    $(".modal-body").append('<img src=assets/bottom.jpg>');
+      $modal = $('#resultsModal');
+      $modal.modal('show');
+  }
+
+  function battleResponse () {
+    $(".modal-body").html('<img src=assets/player_vs_pokemon.jpg>');
+    $(".modal-body").append("<p>Opponent sent out "+enemy.name+". Go "+player.name+"!!</p>");
+    $(".modal-body").append('<img src=assets/bottom.jpg>');
+      $modal = $('#resultsModal');
+      $modal.modal('show');
+  }
+
 function battle2 () {
   if (player.attack >= enemy.defense) {
     enemy.hp -= 20;
@@ -138,7 +162,7 @@ function battle2 () {
       $modal.modal('show');
   } else if (player.hp <= 0 ) {
       $(".modal-body").html("<img src=assets/opponent_win.jpg>")
-      $(".modal-body").append("<p>Your Pokemon Fainted! Battle Lost</p>");
+      $(".modal-body").append("<p>Your Pokemon Fainted! Battle Lost. Player is out of available Pokemon, Player backed away.</p>");
       $(".modal-body").append('<img src=assets/bottom.jpg>');
       $modal.modal('show');
   } else if (enemy.hp <= 0) {
