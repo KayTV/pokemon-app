@@ -111,8 +111,8 @@ function battle2 () {
     enemy.hp -= 20;
     player.hp -= 10;
     $(".modal-body").html('<img src=assets/Battle.jpg>');
-    $(".modal-body").append("<p>Critical Hit! Your opponent has " +enemy.hp+ " HP left. Opponent attacked, You have "
-      +player.hp+ " HP left. Keep Battling??</p>");
+    $(".modal-body").append("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+      +player.hp+ "</span> HP left. Keep Battling??</p>");
     $(".modal-body").append('<img src=assets/bottom.jpg>');
       $modal = $('#resultsModal');
       console.log($modal);
@@ -121,8 +121,8 @@ function battle2 () {
     player.hp -= 20;
     enemy.hp -= 10;
     $(".modal-body").html('<img src=assets/Battle.jpg>');
-    $(".modal-body").append("<p>Opponent's pokemon is strong! You have " +player.hp+ " HP left. Your pokemon attacks. Opponent has "
-      +enemy.hp+ " HP left. Keep Battling??</p>");
+    $(".modal-body").append("<p>Opponent's pokemon is strong! You have <span id='playerhp'>" +player.hp+ "</span> HP left. Your pokemon attacks. Opponent has <span id='enemyhp'>"
+      +enemy.hp+ "</span> HP left. Keep Battling??</p>");
     $(".modal-body").append('<img src=assets/bottom.jpg>');
       $modal = $('#resultsModal');
       console.log($modal);
@@ -132,8 +132,8 @@ function battle2 () {
         enemy.hp -= 10;
         player.hp -= 5;
         $(".modal-body").html('<img src=assets/Battle.jpg>');
-        $(".modal-body").append("<p>Pokemon are closely matched! Your opponent has " +enemy.hp+ " HP left. Opponent attacked, You have "
-          +player.hp+ " HP left. Keep Battling??</p>");
+        $(".modal-body").append("<p>Pokemon are closely matched! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+          +player.hp+ "</span> HP left. Keep Battling??</p>");
         $(".modal-body").append('<img src=assets/bottom.jpg>');
           $modal = $('#resultsModal');
           console.log($modal);
@@ -142,14 +142,17 @@ function battle2 () {
         player.hp -= 10;
         enemy.hp -= 5;
         $(".modal-body").html('<img src=assets/Battle.jpg>');
-        $(".modal-body").append("<p>Pokemon are closely matched! Your opponent has " +enemy.hp+ " HP left. Opponent attacked, You have "
-          +player.hp+ " HP left. Keep Battling??</p>");
+        $(".modal-body").append("<p>Pokemon are closely matched! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+          +player.hp+ "</span> HP left. Keep Battling??</p>");
         $(".modal-body").append('<img src=assets/bottom.jpg>');
           $modal = $('#resultsModal');
           console.log($modal);
           $modal.modal('show');
       }
-  }
+
+  }  $("#playerhp").css("color", "red");
+     $("#enemyhp").css("color", "blue");
+
   if (player.attack === enemy.defense || player.defense === enemy.attack) {
       player.hp -= 20;
       enemy.hp -= 20;
