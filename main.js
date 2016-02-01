@@ -1,6 +1,9 @@
 $(document).ready( function() {
   var player;
   var enemy;
+  var mainMusic = document.getElementById("mainMusic");
+  var battleMusic = document.getElementById("battleMusic");
+  var victoryMusic = document.getElementById("victoryMusic");
 
   $("#call").on("click", function(){
     var pokemon = $("#title").val();
@@ -14,6 +17,7 @@ $(document).ready( function() {
     $("#fade").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
     $("#keepBattling").hide();
     $("#battleModal").show();
+    playAudio();
     battle();
   });
 
@@ -91,63 +95,70 @@ $(document).ready( function() {
   }
 
   function battle () {
-    $(".modal-body").html('<img src=assets/red_vs_blue.jpg>');
-    $(".modal-body").append("<p>Opponent wants to battle!!</p>");
-    $(".modal-body").append('<img src=assets/bottom.jpg>');
+    $("#1").animate({ opacity: 1}, 200);
+    $("#context").html("<p>Opponent wants to battle!!</p>");
       $modal = $('#resultsModal');
       $modal.modal('show');
   }
 
   function battleResponse () {
-    $(".modal-body").html('<img src=assets/player_vs_pokemon.jpg>');
-    $(".modal-body").append("<p>Opponent sent out "+enemy.name+". Go "+player.name+"!!</p>");
-    $(".modal-body").append('<img src=assets/bottom.jpg>');
-      $modal = $('#resultsModal');
-      $modal.modal('show');
+    $("#2").animate({ opacity: 1}, 200);
+    $("#context").html("<p>Opponent sent out "+enemy.name+". Go "+player.name+"!!</p>");
+
   }
 
+  function playAudio() {
+      battleMusic.play();
+      mainMusic.pause();
+      battleMusic.currentTime =1;
+  }
+
+
+  function winMusic(){
+    battleMusic.pause();
+    victoryMusic.play();
+    victoryMusic.currentTime =0.5;
+  }
+
+  $('body').on('hidden.bs.modal', '.modal', function () {
+    mainMusic.play();
+    battleMusic.pause();
+    victoryMusic.pause();
+    battleMusic.currentTime =0;
+    victoryMusic.currentTime =0;
+    mainMusic.currentTime =0;
+    $("#2").animate({ opacity: 0}, 200);
+    $("#3").animate({ opacity: 0}, 200);
+    $("#4").animate({ opacity: 0}, 200);
+    $("#5").animate({ opacity: 0}, 200);
+    $("#1").animate({ opacity: 1}, 200);
+  });
+
 function battle2 () {
+  $("#3").animate({ opacity: 1}, 200);
   if (player.attack >= enemy.defense) {
     enemy.hp -= 20;
     player.hp -= 10;
-    $(".modal-body").html('<img src=assets/Battle.jpg>');
-    $(".modal-body").append("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+    $("#context").html("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
       +player.hp+ "</span> HP left. Keep Battling??</p>");
-    $(".modal-body").append('<img src=assets/bottom.jpg>');
-      $modal = $('#resultsModal');
-      console.log($modal);
-      $modal.modal('show');
   } else if (player.defense <= enemy.attack) {
     player.hp -= 20;
     enemy.hp -= 10;
-    $(".modal-body").html('<img src=assets/Battle.jpg>');
-    $(".modal-body").append("<p>Opponent's pokemon is strong! You have <span id='playerhp'>" +player.hp+ "</span> HP left. Your pokemon attacks. Opponent has <span id='enemyhp'>"
+    $("#context").html("<p>Opponent's pokemon is strong! You have <span id='playerhp'>" +player.hp+ "</span> HP left. Your pokemon attacks. Opponent has <span id='enemyhp'>"
       +enemy.hp+ "</span> HP left. Keep Battling??</p>");
-    $(".modal-body").append('<img src=assets/bottom.jpg>');
-      $modal = $('#resultsModal');
-      console.log($modal);
-      $modal.modal('show');
   } else {
+    $("#3").animate({ opacity: 1}, 200);
       if (player.attack > enemy.attack) {
         enemy.hp -= 10;
         player.hp -= 5;
-        $(".modal-body").html('<img src=assets/Battle.jpg>');
-        $(".modal-body").append("<p>Pokemon are closely matched! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+        $("#context").html("<p>Pokemon are closely matched! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
           +player.hp+ "</span> HP left. Keep Battling??</p>");
-        $(".modal-body").append('<img src=assets/bottom.jpg>');
-          $modal = $('#resultsModal');
-          console.log($modal);
-          $modal.modal('show');
       } else if (player.attack < enemy.attack) {
         player.hp -= 10;
         enemy.hp -= 5;
-        $(".modal-body").html('<img src=assets/Battle.jpg>');
-        $(".modal-body").append("<p>Pokemon are closely matched! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+        $("#context").html("<p>Pokemon are closely matched! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
           +player.hp+ "</span> HP left. Keep Battling??</p>");
-        $(".modal-body").append('<img src=assets/bottom.jpg>');
-          $modal = $('#resultsModal');
-          console.log($modal);
-          $modal.modal('show');
+
       }
 
   }  $("#playerhp").css("color", "red");
@@ -158,15 +169,12 @@ function battle2 () {
       $(".modal-body").append("<img src=http://2.bp.blogspot.com/-oMKi1odYqAA/TtnLMZTLq5I/AAAAAAAABM0/S3ppJU_zijQ/s1600/vlcsnap-1473307.png>")
       $modal.modal('show');
   } else if (player.hp <= 0 ) {
-      $(".modal-body").html("<img src=assets/opponent_win.jpg>")
-      $(".modal-body").append("<p>Your Pokemon Fainted! Battle Lost. Player is out of available Pokemon, Player backed away.</p>");
-      $(".modal-body").append('<img src=assets/bottom.jpg>');
-      $modal.modal('show');
+    $("#5").animate({ opacity: 1}, 200);
+      $("#context").html("<p>Your Pokemon Fainted! Battle Lost. Player is out of available Pokemon, Player backed away.</p>");
   } else if (enemy.hp <= 0) {
-      $(".modal-body").html("<img src=assets/player_win.jpg>")
-      $(".modal-body").append("<p>Your opponent's Pokemon fainted! Battle Won!!!</p>");
-      $(".modal-body").append('<img src=assets/bottom.jpg>');
-      $modal.modal('show');
+    $("#4").animate({ opacity: 1}, 200);
+      $("#context").html("<p>Your opponent's Pokemon fainted! Battle Won!!!</p>");
+      winMusic();
   }
 };
 });

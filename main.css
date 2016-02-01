@@ -76,9 +76,28 @@ button[type = submit] {
   font-size: 20px;
 }
 
-.modal-content img {
+.modal-body {
+  height: 300px;
   width: 100%;
+}
+
+.wrapper {
+  position: relative;
+
+}
+
+.modalImage {
+  position: absolute;
+  opacity: 0;
   height: 100%;
+  width: 95%;
+
+}
+
+.bottomImg {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .modal-content p {

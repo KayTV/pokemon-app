@@ -33,16 +33,25 @@
     </section>
   </div>
     <!-- my modal -->
-    <div class="modal fade bs-example-modal-sm" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="container">
+    <div class="modal fade bs-example-modal-lg" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Pokemon Battle!!!</h4>
           </div>
+        <div class="wrapper">
           <div class="modal-body">
-            ...
-          </div>
+            <img src="assets/red_vs_blue.jpg" class="modalImage" id="1">
+            <img src="assets/player_vs_pokemon.jpg" class="modalImage" id="2">
+            <img src="assets/Battle.jpg" class="modalImage" id="3">
+            <img src="assets/player_win.jpg" class="modalImage" id="4">
+            <img src="assets/opponent_win.jpg" class="modalImage" id="5">
+          </div><br>
+          <div id="context"></div>
+          <img src="assets/bottom.jpg" class="bottomImg">
+        </div>
           <div class="modal-footer">
             <p>Hits: </p>
             <div id="hits"></div>
@@ -53,6 +62,21 @@
         </div>
       </div>
     </div>
+  </div>
+    <footer>
+      <audio controls autoplay id="mainMusic">
+        <source src="assets/101-opening.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <audio controls id="battleMusic">
+        <source src="assets/115-battle-vs-trainer-.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <audio controls id="victoryMusic">
+        <source src="assets/116-victory-vs-trainer-.mp3" type="audio/mpeg" >
+        Your browser does not support the audio element.
+      </audio>
+    </footer>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
