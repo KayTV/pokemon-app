@@ -153,13 +153,7 @@ function battle2 () {
   }  $("#playerhp").css("color", "red");
      $("#enemyhp").css("color", "blue");
 
-  if (player.attack === enemy.defense || player.defense === enemy.attack) {
-      player.hp -= 20;
-      enemy.hp -= 20;
-      $(".modal-body").html("<p>Your pokemon are evenly matched!</p>");
-      $(".modal-body").append("<img src=http://www.vizzed.com/boards/userimages/postattachments/223596-1359002011.jpg>")
-      $modal.modal('show');
-  } else if (player.hp <=0 && enemy.hp <= 0) {
+    if (player.hp <=0 && enemy.hp <= 0) {
       $(".modal-body").html("<p>Pokemon are equally matched, both fainted.</p>");
       $(".modal-body").append("<img src=http://2.bp.blogspot.com/-oMKi1odYqAA/TtnLMZTLq5I/AAAAAAAABM0/S3ppJU_zijQ/s1600/vlcsnap-1473307.png>")
       $modal.modal('show');
