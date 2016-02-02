@@ -57,7 +57,8 @@ $(document).ready( function() {
               $("#types").append(val.name);
             }
           });
-          $("#results").append("<h4>Attack: "+response.attack+", Defense: "+response.defense+", HP: "+response.hp+"</h4>");
+          $("#results").append("<h4>Attack: "+response.attack+", Defense: "
+            +response.defense+", HP: "+response.hp+"</h4>");
           $("#results").append('<img src=http://pokeapi.co'+response2.image+'/>');
           $("#title").val('');
       });
@@ -105,7 +106,11 @@ $(document).ready( function() {
   function battleResponse () {
     $("#2").animate({ opacity: 1}, 200);
     $("#context").html("<p>Opponent sent out "+enemy.name+". Go "+player.name+"!!</p>");
-
+    setTimeout(function(){
+      $("#3").animate({ opacity: 1}, 200);
+      $("#context").html("<p>"+enemy.name+" has <span id='enemyhp'>" +enemy.hp+
+      "</span> HP and "+player.name+ " has <span id='playerhp'>" +player.hp+ "</span> HP. Battle!</p>")
+    }, 700)
   }
 
   function playAudio() {
@@ -143,30 +148,32 @@ $(document).ready( function() {
   });
 
 function battle2 () {
-  $("#3").animate({ opacity: 1}, 200);
   if (player.attack >= enemy.defense && player.attack >= enemy.attack) {
     enemy.hp -= 30;
     player.hp -= 10;
-    $("#context").html("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+    $("#context").html("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+
+      "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
       +player.hp+ "</span> HP left. Keep Battling??</p>");
   } else if (player.defense <= enemy.attack && player.attack <= enemy.attack) {
     player.hp -= 30;
     enemy.hp -= 10;
-    $("#context").html("<p>Opponent's pokemon is strong! You have <span id='playerhp'>" +player.hp+ "</span> HP left. Your pokemon attacks. Opponent has <span id='enemyhp'>"
+    $("#context").html("<p>Opponent's pokemon is strong! You have <span id='playerhp'>"
+      +player.hp+ "</span> HP left. Your pokemon attacks. Opponent has <span id='enemyhp'>"
       +enemy.hp+ "</span> HP left. Keep Battling??</p>");
   } else {
     $("#3").animate({ opacity: 1}, 200);
       if (player.attack > enemy.attack) {
         enemy.hp -= 10;
         player.hp -= 5;
-        $("#context").html("<p>Pokemon are closely matched! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+        $("#context").html("<p>Pokemon are closely matched! Your opponent has <span id='enemyhp'>"
+          +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
           +player.hp+ "</span> HP left. Keep Battling??</p>");
       } else if (player.attack < enemy.attack) {
         player.hp -= 10;
         enemy.hp -= 5;
-        $("#context").html("<p>Pokemon are closely matched! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+        $("#context").html("<p>Pokemon are closely matched! Your opponent has <span id='enemyhp'>"
+          +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
           +player.hp+ "</span> HP left. Keep Battling??</p>");
-
       }
 
   }  $("#playerhp").css("color", "red");
