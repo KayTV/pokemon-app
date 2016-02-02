@@ -139,26 +139,23 @@ $(document).ready( function() {
     for (var i=2; i<=5; i++) {
       $("#"+i).animate({opacity: 0}, 200);
     }
-    // $("#2").animate({ opacity: 0}, 200);
-    // $("#3").animate({ opacity: 0}, 200);
-    // $("#4").animate({ opacity: 0}, 200);
-    // $("#5").animate({ opacity: 0}, 200);
     $("#1").animate({ opacity: 1}, 200);
   });
 
 function battle2 () {
   $("#3").animate({ opacity: 1}, 200);
   if (player.attack >= enemy.defense) {
-    enemy.hp -= 20;
+    enemy.hp -= 30;
     player.hp -= 10;
     $("#context").html("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
       +player.hp+ "</span> HP left. Keep Battling??</p>");
-  } else if (player.defense <= enemy.attack) {
-    player.hp -= 20;
+  }
+   if (player.defense <= enemy.attack) {
+    player.hp -= 30;
     enemy.hp -= 10;
     $("#context").html("<p>Opponent's pokemon is strong! You have <span id='playerhp'>" +player.hp+ "</span> HP left. Your pokemon attacks. Opponent has <span id='enemyhp'>"
       +enemy.hp+ "</span> HP left. Keep Battling??</p>");
-  } else {
+  } else if (player.attack < enemy.defense) {
     $("#3").animate({ opacity: 1}, 200);
       if (player.attack > enemy.attack) {
         enemy.hp -= 10;
@@ -176,11 +173,7 @@ function battle2 () {
   }  $("#playerhp").css("color", "red");
      $("#enemyhp").css("color", "blue");
 
-    if (player.hp <=0 && enemy.hp <= 0) {
-      $(".modal-body").html("<p>Pokemon are equally matched, both fainted.</p>");
-      $(".modal-body").append("<img src=http://2.bp.blogspot.com/-oMKi1odYqAA/TtnLMZTLq5I/AAAAAAAABM0/S3ppJU_zijQ/s1600/vlcsnap-1473307.png>")
-      $modal.modal('show');
-  } else if (player.hp <= 0 ) {
+   if (player.hp <= 0 ) {
     $("#5").animate({ opacity: 1}, 200);
       $("#context").html("<p>Your Pokemon Fainted! Battle Lost. Player is out of available Pokemon, Player backed away.</p>");
       lostMusic();
