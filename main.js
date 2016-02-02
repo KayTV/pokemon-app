@@ -144,18 +144,17 @@ $(document).ready( function() {
 
 function battle2 () {
   $("#3").animate({ opacity: 1}, 200);
-  if (player.attack >= enemy.defense) {
+  if (player.attack >= enemy.defense && player.attack >= enemy.attack) {
     enemy.hp -= 30;
     player.hp -= 10;
     $("#context").html("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+ "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
       +player.hp+ "</span> HP left. Keep Battling??</p>");
-  }
-   if (player.defense <= enemy.attack) {
+  } else if (player.defense <= enemy.attack && player.attack <= enemy.attack) {
     player.hp -= 30;
     enemy.hp -= 10;
     $("#context").html("<p>Opponent's pokemon is strong! You have <span id='playerhp'>" +player.hp+ "</span> HP left. Your pokemon attacks. Opponent has <span id='enemyhp'>"
       +enemy.hp+ "</span> HP left. Keep Battling??</p>");
-  } else if (player.attack < enemy.defense) {
+  } else {
     $("#3").animate({ opacity: 1}, 200);
       if (player.attack > enemy.attack) {
         enemy.hp -= 10;
