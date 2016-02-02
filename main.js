@@ -4,6 +4,7 @@ $(document).ready( function() {
   var mainMusic = document.getElementById("mainMusic");
   var battleMusic = document.getElementById("battleMusic");
   var victoryMusic = document.getElementById("victoryMusic");
+  var loseMusic = document.getElementById("loseMusic");
 
   $("#call").on("click", function(){
     var pokemon = $("#title").val();
@@ -120,17 +121,28 @@ $(document).ready( function() {
     victoryMusic.currentTime =0.5;
   }
 
+  function lostMusic(){
+    battleMusic.pause();
+    loseMusic.play();
+    loseMusic.currentTime =0.5;
+  }
+
   $('body').on('hidden.bs.modal', '.modal', function () {
     mainMusic.play();
     battleMusic.pause();
     victoryMusic.pause();
+    loseMusic.pause();
     battleMusic.currentTime =0;
     victoryMusic.currentTime =0;
     mainMusic.currentTime =0;
-    $("#2").animate({ opacity: 0}, 200);
-    $("#3").animate({ opacity: 0}, 200);
-    $("#4").animate({ opacity: 0}, 200);
-    $("#5").animate({ opacity: 0}, 200);
+    loseMusic.currentTime =0;
+    for (var i=2; i<=5; i++) {
+      $("#"+i).animate({opacity: 0}, 200);
+    }
+    // $("#2").animate({ opacity: 0}, 200);
+    // $("#3").animate({ opacity: 0}, 200);
+    // $("#4").animate({ opacity: 0}, 200);
+    // $("#5").animate({ opacity: 0}, 200);
     $("#1").animate({ opacity: 1}, 200);
   });
 
@@ -171,6 +183,7 @@ function battle2 () {
   } else if (player.hp <= 0 ) {
     $("#5").animate({ opacity: 1}, 200);
       $("#context").html("<p>Your Pokemon Fainted! Battle Lost. Player is out of available Pokemon, Player backed away.</p>");
+      lostMusic();
   } else if (enemy.hp <= 0) {
     $("#4").animate({ opacity: 1}, 200);
       $("#context").html("<p>Your opponent's Pokemon fainted! Battle Won!!!</p>");
