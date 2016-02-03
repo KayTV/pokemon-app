@@ -12,11 +12,18 @@ function battle1 () {
           winMusic();
       }
   } if(player.types[0].name === "fire" && enemy.types[0].name === "water") {
-    player.hp -= 50;
-    enemy.hp -= 3;
-    $("#context").html("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+
-      "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
-      +player.hp+ "</span> HP left. Keep Battling??</p>");
+      player.hp -= 50;
+      enemy.hp -= 3;
+      $("#context").html("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+
+        "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+        +player.hp+ "</span> HP left. Keep Battling??</p>");
+        if(player.hp <= 0) {
+          $("#5").animate({ opacity: 1}, 200);
+            $("#context").html("<p>Your Pokemon Fainted! Battle Lost. Player is out of available Pokemon, Player backed away.</p>");
+            lostMusic();
+      }
+  } else {
+      battle2();
   }
 
 }
