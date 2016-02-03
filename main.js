@@ -30,7 +30,7 @@ $(document).ready( function() {
 
   $("#keepBattling").on("click", function(){
     $("#hits").append("<img src=http://www.clipartbest.com/cliparts/bTy/E66/bTyE66gbc.png>");
-    battle2();
+    battle1();
   });
 
   function userPokemon(pokemon) {
@@ -110,6 +110,8 @@ $(document).ready( function() {
       $("#3").animate({ opacity: 1}, 200);
       $("#context").html("<p>"+enemy.name+" has <span id='enemyhp'>" +enemy.hp+
       "</span> HP and "+player.name+ " has <span id='playerhp'>" +player.hp+ "</span> HP. Battle!</p>")
+      $("#playerhp").css("color", "red");
+      $("#enemyhp").css("color", "blue");
     }, 700)
   }
 
@@ -118,7 +120,6 @@ $(document).ready( function() {
       mainMusic.pause();
       battleMusic.currentTime =1;
   }
-
 
   function winMusic(){
     battleMusic.pause();
@@ -146,6 +147,19 @@ $(document).ready( function() {
     }
     $("#1").animate({ opacity: 1}, 200);
   });
+
+  function battle1 () {
+    $("#3").animate({ opacity: 1}, 200);
+    if(player.types === "water" && enemy.types === "fire") {
+      enemy.hp -= 50;
+      player.hp -= 3;
+      $("#context").html("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+
+        "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
+        +player.hp+ "</span> HP left. Keep Battling??</p>");
+    } else {
+      battle2();
+    }
+  };
 
 function battle2 () {
   if (player.attack >= enemy.defense && player.attack >= enemy.attack) {
