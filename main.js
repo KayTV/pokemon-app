@@ -30,7 +30,7 @@ $(document).ready( function() {
 
   $("#keepBattling").on("click", function(){
     $("#hits").append("<img src=http://www.clipartbest.com/cliparts/bTy/E66/bTyE66gbc.png>");
-    battle1();
+    battle2();
   });
 
   function userPokemon(pokemon) {
@@ -147,19 +147,6 @@ $(document).ready( function() {
     }
     $("#1").animate({ opacity: 1}, 200);
   });
-
-  function battle1 () {
-    $("#3").animate({ opacity: 1}, 200);
-    if(player.types === "water" && enemy.types === "fire") {
-      enemy.hp -= 50;
-      player.hp -= 3;
-      $("#context").html("<p>Critical Hit! Your opponent has <span id='enemyhp'>" +enemy.hp+
-        "</span> HP left. Opponent attacked, You have <span id='playerhp'>"
-        +player.hp+ "</span> HP left. Keep Battling??</p>");
-    } else {
-      battle2();
-    }
-  };
 
 function battle2 () {
   if (player.attack >= enemy.defense && player.attack >= enemy.attack) {

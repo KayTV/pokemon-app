@@ -1,13 +1,13 @@
 
 <h1>Front End Project</h1>
   <h2>Description</h2>
-    <p>For my first project at Galvanize I chose to make a game that takes a battle sequence from the popular game, Pokemon, 
+    <p>For my first project at Galvanize I chose to make a game that takes a battle sequence from the popular game, Pokemon,
     and recreates it. This project uses two of the Pokemon API in which I created AJAX requests within each other to not only
     generate the name and status points but also incorporated the pictures (which was why the two AJAX requests were needed).
     It generates the pokemon you select and then generates a random Pokemon for an opponent to battle against. When the battle button is clicked, then a modal appears with the battle sequence</p>
     <p>This project mainly uses DOM manipulation with JavaScript and Jquery. It has  lot of components working together to recreate a battle, including music that matches up as well as pictures matching with what stage in the battle you are in. It takes parts of the AJAX request to match up the attack vs the defense then subtracts from the HP points until one pokemon is the winner.</p>
   <h2>Uses</h2>
-    <p>My project is goint to a game in which it is basically a pokemon battle. You enter in a number and get your pokemon,
+    <p>My project is going to a game in which it is basically a pokemon battle. You enter in a number and get your pokemon,
     then a random pokemon is generated for you to battle against. Denpending on your stat points, you either win or lose.
     Currently the basic's of the project are created. There's a lot of details to add to fix the bugs of the game and to make
     it more like the actual Pokemon game</p>
