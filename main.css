@@ -28,12 +28,8 @@ img {
 .results {
   height: 75%;
   min-height: 330px;
-  /*width: 450px;*/
   background-color: rgba(255, 255, 255, 0.7);
-  /*margin: 10px;*/
-  /*margin-left: 50px;*/
   text-align: center;
-  /*float: left;*/
   padding: 5px;
   border-radius: 10px;
 }
@@ -41,12 +37,8 @@ img {
 .enemy {
   height: 75%;
   min-height: 330px;
-  /*width: 450px;*/
   background-color: rgba(255, 255, 255, 0.7);
-  /*margin: 10px;*/
-  /*margin-right: 50px;*/
   text-align: center;
-  /*float: right;*/
   padding: 5px;
   border-radius: 10px;
 }
