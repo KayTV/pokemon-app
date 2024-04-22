@@ -42,6 +42,7 @@ $(document).ready( function() {
       player = response;
       $.ajax({
         url: 'http://pokeapi.co/api/v1/sprite/'+(+pokemon+1)+'/',
+        headers: {'Access-Control-Allow-Origin': '*'},
         method: 'GET',
       }).done(function(response2) {
         console.log(response2)
@@ -69,12 +70,14 @@ $(document).ready( function() {
     var pokemon = Math.floor(Math.random()*718) +1;
     $.ajax({
       url: 'http://pokeapi.co/api/v1/pokemon/'+pokemon+'/',
+      headers: {'Access-Control-Allow-Origin': '*'},
       method: 'GET',
     }).done(function(response) {
       console.log(response);
       enemy = response;
       $.ajax({
         url: 'http://pokeapi.co/api/v1/sprite/'+(+pokemon+1)+'/',
+        headers: {'Access-Control-Allow-Origin': '*'},
         method: 'GET',
       }).done(function(response2) {
         console.log(response2)
