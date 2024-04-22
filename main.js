@@ -40,15 +40,9 @@ $(document).ready( function() {
     }).done(function(response) {
       console.log(response);
       player = response;
-      $.ajax({
-        url: 'https://pokeapi.co/api/v2/sprite/'+(+pokemon+1)+'/',
-        headers: {'Access-Control-Allow-Origin': '*'},
-        method: 'GET',
-      }).done(function(response2) {
-        console.log(response2)
         $("#results").html('  ');
           $("#results").append("<h3>"+response.name+"</h3>");
-          $("#results").append("<p> Pokedex Number: "+response.pkdx_id+"</p>")
+          $("#results").append("<p> Pokedex Number: "+response.id+"</p>")
           //loop
           $("#results").append("<p id=\"types\">Type: </p>");
           response.types.forEach(function(val, index, array) {
@@ -58,11 +52,10 @@ $(document).ready( function() {
               $("#types").append(val.name);
             }
           });
-          $("#results").append("<h4>Attack: "+response.attack+", Defense: "
-            +response.defense+", HP: "+response.hp+"</h4>");
-          $("#results").append('<img src=http://pokeapi.co'+response2.image+'/>');
+          $("#results").append("<h4>Attack: "+response.stats[1].base_stat+", Defense: "
+            +response.stats[2].base_stat+", HP: "+response.stats[0].base_stat+"</h4>");
+          $("#results").append('<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+response.id+'.png/>');
           $("#title").val('');
-      });
     });
   }
 
@@ -75,15 +68,9 @@ $(document).ready( function() {
     }).done(function(response) {
       console.log(response);
       enemy = response;
-      $.ajax({
-        url: 'https://pokeapi.co/api/v2/sprite/'+(+pokemon+1)+'/',
-        headers: {'Access-Control-Allow-Origin': '*'},
-        method: 'GET',
-      }).done(function(response2) {
-        console.log(response2)
         $("#enemy").html('  ');
           $("#enemy").append("<h3>"+response.name+"</h3>");
-          $("#enemy").append("<p> Pokedex Number: "+response.pkdx_id+"</p>")
+          $("#enemy").append("<p> Pokedex Number: "+response.id+"</p>")
           $("#enemy").append("<p id=\"enemyTypes\">Type: </p>");
           response.types.forEach(function(val, index, array) {
             if(index !== array.length-1){
@@ -92,10 +79,9 @@ $(document).ready( function() {
               $("#enemyTypes").append(val.name);
             }
           });
-          $("#enemy").append("<h4>Attack: "+response.attack+", Defense: "+response.defense+", HP: "+response.hp+"</h4>");
-          $("#enemy").append('<img src=http://pokeapi.co'+response2.image+'/>');
+          $("#enemy").append("<h4>Attack: "+response.stats[1].base_stat+", Defense: "+response.stats[2].base_stat+", HP: "+response.stats[0].base_stat+"</h4>");
+          $("#enemy").append('<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+response.id+'.png/>');
           $("#title").val('');
-      });
     });
   }
 
