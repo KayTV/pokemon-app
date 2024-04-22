@@ -47,14 +47,14 @@ $(document).ready( function() {
           $("#results").append("<p id=\"types\">Type: </p>");
           response.types.forEach(function(val, index, array) {
             if(index !== array.length-1){
-              $("#types").append(val.name+", ");
+              $("#types").append(val.type.name+", ");
             } else {
-              $("#types").append(val.name);
+              $("#types").append(val.type.name);
             }
           });
           $("#results").append("<h4>Attack: "+response.stats[1].base_stat+", Defense: "
             +response.stats[2].base_stat+", HP: "+response.stats[0].base_stat+"</h4>");
-          $("#results").append('<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+response.id+'.png/>');
+          $("#results").append('<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+response.id+'.png>');
           $("#title").val('');
     });
   }
@@ -74,13 +74,13 @@ $(document).ready( function() {
           $("#enemy").append("<p id=\"enemyTypes\">Type: </p>");
           response.types.forEach(function(val, index, array) {
             if(index !== array.length-1){
-              $("#enemyTypes").append(val.name+", ");
+              $("#enemyTypes").append(val.type.name+", ");
             } else {
-              $("#enemyTypes").append(val.name);
+              $("#enemyTypes").append(val.type.name);
             }
           });
           $("#enemy").append("<h4>Attack: "+response.stats[1].base_stat+", Defense: "+response.stats[2].base_stat+", HP: "+response.stats[0].base_stat+"</h4>");
-          $("#enemy").append('<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+response.id+'.png/>');
+          $("#enemy").append('<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+response.id+'.png>');
           $("#title").val('');
     });
   }
