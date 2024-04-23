@@ -16,53 +16,61 @@
       <h3>Choose Your Pokemon!</h3>
     </header>
     <section class="container">
-      <center>
-        <input type="text" id='title' placeholder="Enter In Pokedex Number"><br>
-        <button id='call' type="submit">Search</button>
-        <button id='battle' type="submit">Battle!!</button><br>
-      </center>
-      <div class='results col-xs-offset-1 col-xs-4 '>
-        <h3>Player:</h3>
-        <div id='results'>
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <input type="text" id='title' placeholder="Enter In Pokedex Number"><br>
         </div>
       </div>
-      <div class='enemy col-xs-offset-2 col-xs-4'>
-        <h3>Opponent:</h3>
-        <div id='enemy'></div>
+      <div class="row justify-content-center">
+        <div class="col-md-5 offset-md-1">
+          <button id='call' type="submit">Search</button>
+          <button id='battle' type="submit">Battle!!</button><br>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class='results col-md-4 offset-md-1'>
+          <h3>Player:</h3>
+          <div id='results'>
+          </div>
+        </div>
+        <div class='enemy col-md-4 offset-md-2'>
+          <h3>Opponent:</h3>
+          <div id='enemy'></div>
+        </div>
       </div>
     </section>
   </div>
     <!-- my modal -->
-    <div class="container">
-    <div class="modal fade bs-example-modal-lg" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-      <div class="modal-dialog" role="document">
+  <div class="modal" id="resultsModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Pokemon Battle!!!</h4>
-          </div>
-        <div class="wrapper">
-          <div class="modal-body">
-            <img src="assets/ash_vs_gary.jpg" class="modalImage" id="1">
-            <img src="assets/player_vs_pokemon.jpg" class="modalImage" id="2">
-            <img src="assets/Battle.jpg" class="modalImage" id="3">
-            <img src="assets/player_win.jpg" class="modalImage" id="4">
-            <img src="assets/opponent_win.jpg" class="modalImage" id="5">
-          </div><br>
-          <div id="context"></div>
-          <img src="assets/bottom.jpg" class="bottomImg">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Pokemon Battle!!!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="wrapper">
+              <div class="modal-body">
+                <img src="assets/ash_vs_gary.jpg" class="modalImage" id="1">
+                <img src="assets/player_vs_pokemon.jpg" class="modalImage" id="2">
+                <img src="assets/Battle.jpg" class="modalImage" id="3">
+                <img src="assets/player_win.jpg" class="modalImage" id="4">
+                <img src="assets/opponent_win.jpg" class="modalImage" id="5">
+              </div><br>
+              <div id="context"></div>
+              <img src="assets/bottom.jpg" class="bottomImg">
+            </div>
+            <div class="modal-footer">
+                <p>Hits: </p>
+                <div id="hits"></div>
+                <button type="button" class="btn btn-success" id="battleModalButton">BATTLE!</button>
+                <button type="button" class="btn btn-primary" id="keepBattling">Keep Battling!!</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="runAway">Run Away!</button>
+            </div>
         </div>
-          <div class="modal-footer">
-            <p>Hits: </p>
-            <div id="hits"></div>
-            <button type="button" class="btn btn-success" id="battleModal">BATTLE!</button>
-            <button type="button" class="btn btn-primary" id="keepBattling">Keep Battling!!</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal" id="runAway">Run Away!</button>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
   <!-- music elements-->
     <footer>
       <audio controls autoplay id="mainMusic" style="margin-top: 20px; padding: 20px">
@@ -82,11 +90,12 @@
         Your browser does not support the audio element.
       </audio>
     </footer>
-    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./main.js"></script>
   </body>
 </html>

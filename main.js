@@ -16,15 +16,15 @@ $(document).ready( function() {
   $("#battle").on("click", function(){
     $('#hits').html('');
     $("#fade").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-    $("#keepBattling").modal('hide');
-    $("#battleModal").modal('show');
+    $('#keepBattling').hide();
+    $('#battleModalButton').show();
     playAudio();
     battle();
   });
 
-  $("#battleModal").on("click", function(){
-    $("#keepBattling").modal('show');
-    $("#battleModal").modal('hide');
+  $("#battleModalButton").on("click", function(){
+    $("#keepBattling").show();
+    $("#battleModalButton").hide();
     battleResponse();
   });
 
@@ -93,13 +93,15 @@ $(document).ready( function() {
 
   function battle () {
     $("#1").animate({ opacity: 1}, 200);
-    $("#context").html("<p>Opponent wants to battle!!</p>");
+    $("#context").html('  ');
+    $("#context").append("<p>Opponent wants to battle!!</p>");
     $('#resultsModal').modal('show');
   }
 
   function battleResponse () {
+    console.log(enemy, player)
     $("#2").animate({ opacity: 1}, 200);
-    $("#context").html("<p>Opponent sent out "+enemy.name+". Go "+player.name+"!!</p>");
+    $("#context").append("<p>Opponent sent out "+enemy.name+". Go "+player.name+"!!</p>");
     setTimeout(function(){
       $("#3").animate({ opacity: 1}, 200);
       $("#context").html("<p>"+enemy.name+" has <span id='enemyhp'>" +enemy.hp+
