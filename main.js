@@ -16,15 +16,15 @@ $(document).ready( function() {
   $("#battle").on("click", function(){
     $('#hits').html('');
     $("#fade").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-    $("#keepBattling").hide();
-    $("#battleModal").show();
+    $("#keepBattling").modal('hide');
+    $("#battleModal").modal('show');
     playAudio();
     battle();
   });
 
   $("#battleModal").on("click", function(){
-    $("#keepBattling").show();
-    $("#battleModal").hide();
+    $("#keepBattling").modal('show');
+    $("#battleModal").modal('hide');
     battleResponse();
   });
 
@@ -40,6 +40,9 @@ $(document).ready( function() {
     }).done(function(response) {
       console.log(response);
       player = response;
+      player.hp = response.stats[0].base_stat;
+      player.attack = response.stats[1].base_stat;
+      player.defense = response.stats[2].base_stat;
         $("#results").html('  ');
           $("#results").append("<h3>"+response.name+"</h3>");
           $("#results").append("<p> Pokedex Number: "+response.id+"</p>")
@@ -68,6 +71,9 @@ $(document).ready( function() {
     }).done(function(response) {
       console.log(response);
       enemy = response;
+      enemy.hp = response.stats[0].base_stat;
+      enemy.attack = response.stats[1].base_stat;
+      enemy.defense = response.stats[2].base_stat;
         $("#enemy").html('  ');
           $("#enemy").append("<h3>"+response.name+"</h3>");
           $("#enemy").append("<p> Pokedex Number: "+response.id+"</p>")
@@ -88,8 +94,7 @@ $(document).ready( function() {
   function battle () {
     $("#1").animate({ opacity: 1}, 200);
     $("#context").html("<p>Opponent wants to battle!!</p>");
-      $modal = $('#resultsModal');
-      $modal.modal('show');
+    $('#resultsModal').modal('show');
   }
 
   function battleResponse () {
